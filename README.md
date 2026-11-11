@@ -4,9 +4,14 @@ A frozen "2016-style" billing report — string-interpolated SQL, float money, u
 
 ```bash
 composer install
-composer test     # 28 tests, 55 assertions
-composer demo     # legible before/after
+composer test        # 28 tests, 55 assertions
+composer demo        # legible before/after in the terminal
+composer demo:docs   # regenerate docs/index.html from a real run
 ```
+
+**[Live demo](https://bluefang05.github.io/php-legacy-refactor/)** — the same data through both implementations, the two holes, and the tests behind it.
+
+[![Demo page](screenshots/demo.png)](https://bluefang05.github.io/php-legacy-refactor/)
 
 ## The problem
 
@@ -52,6 +57,8 @@ refactor:      escaped with htmlspecialchars
 legacy rows:   6 (every row leaked)
 refactor:      InvalidArgumentException: Invalid from date: 2024-01-01' OR '1'='1
 ```
+
+The published page is generated, not written: `bin/build_demo.php` runs both implementations against SQLite, captures their outputs, and refuses to write the HTML if the rows diverge or the holes stop reproducing. The raw XSS payload is printed as escaped source text, never inserted as markup.
 
 ## Stack
 

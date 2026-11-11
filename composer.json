@@ -26,7 +26,8 @@
     },
     "scripts": {
         "test": "phpunit",
-        "demo": "php bin/demo.php"
+        "demo": "php bin/demo.php",
+        "demo:docs": "php bin/build_demo.php"
     },
     "config": {
         "sort-packages": true
